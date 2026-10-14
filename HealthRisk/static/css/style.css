@@ -1,0 +1,141 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f7f4;
+    color: #24352b;
+}
+
+.header {
+    background: #176b45;
+    color: white;
+    padding: 22px 7%;
+}
+
+.header h1 {
+    font-size: 28px;
+}
+
+.header p {
+    margin-top: 8px;
+    color: #e0f2e8;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #0000000d;
+}
+
+.card h3 {
+    color: #547060;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.card h2 {
+    color: #176b45;
+    font-size: 25px;
+}
+
+.panel {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #0000000d;
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd8cf;
+    border-radius: 8px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #176b45;
+}
+
+button {
+    background: #176b45;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 22px;
+}
+
+button:hover {
+    background: #105336;
+}
+
+.disclaimer {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff5df;
+    border-radius: 8px;
+    color: #755a20;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #64756a;
+}
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+}
+```

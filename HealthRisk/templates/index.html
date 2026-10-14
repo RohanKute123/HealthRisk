@@ -1,0 +1,314 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HealthRisk AI | Health Risk Assessment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 28px;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #64756a;
+            line-height: 1.6;
+        }
+
+        .status {
+            background: #e1f4e8;
+            color: #176b45;
+            padding: 10px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .section-heading {
+            margin: 28px 0 16px;
+            font-size: 18px;
+            color: #176b45;
+        }
+
+        .field-note {
+            display: block;
+            color: #78877d;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .submit-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .submit-row button {
+            min-width: 190px;
+        }
+
+        .reset-link {
+            color: #176b45;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 22px;
+        }
+
+        .footer strong {
+            color: #176b45;
+        }
+
+        @media (max-width: 650px) {
+            .hero {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>HealthRisk AI</h1>
+        <p>Machine Learning Based Health Risk Assessment</p>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <h2>Health Assessment Dashboard</h2>
+                <p>
+                    Enter the health measurements below to generate an
+                    educational diabetes risk estimate using your trained
+                    machine learning model.
+                </p>
+            </div>
+
+            <div class="status">
+                ● Risk Assessment
+            </div>
+        </section>
+
+        <section class="dashboard">
+
+            <div class="card">
+                <h3>AI MODEL</h3>
+                <h2>ML Powered</h2>
+                <p>Machine learning prediction</p>
+            </div>
+
+            <div class="card">
+                <h3>INPUT FEATURES</h3>
+                <h2>8 Features</h2>
+                <p>Health measurements</p>
+            </div>
+
+            <div class="card">
+                <h3>ASSESSMENT TYPE</h3>
+                <h2>Diabetes</h2>
+                <p>Educational risk estimation</p>
+            </div>
+
+        </section>
+
+        <section class="panel">
+
+            <h2>Enter Health Information</h2>
+
+            <p style="color:#64756a; margin-bottom:20px; line-height:1.6;">
+                Enter values in the units shown. All fields are required.
+            </p>
+
+            <form action="{{ url_for('predict') }}" method="POST">
+
+                <h3 class="section-heading">
+                    Personal Information
+                </h3>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="Age">Age (years)</label>
+                        <input
+                            type="number"
+                            id="Age"
+                            name="Age"
+                            min="1"
+                            max="120"
+                            step="1"
+                            placeholder="Example: 30"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Pregnancies">
+                            Number of Pregnancies
+                        </label>
+                        <input
+                            type="number"
+                            id="Pregnancies"
+                            name="Pregnancies"
+                            min="0"
+                            max="30"
+                            step="1"
+                            placeholder="Example: 0"
+                            required>
+                        <span class="field-note">
+                            Use 0 if there have been no pregnancies.
+                        </span>
+                    </div>
+
+                </div>
+
+                <h3 class="section-heading">
+                    Health Measurements
+                </h3>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="Glucose">
+                            Glucose (mg/dL)
+                        </label>
+                        <input
+                            type="number"
+                            id="Glucose"
+                            name="Glucose"
+                            min="1"
+                            max="500"
+                            step="any"
+                            placeholder="Example: 120"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BloodPressure">
+                            Diastolic Blood Pressure (mmHg)
+                        </label>
+                        <input
+                            type="number"
+                            id="BloodPressure"
+                            name="BloodPressure"
+                            min="1"
+                            max="250"
+                            step="any"
+                            placeholder="Example: 70"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SkinThickness">
+                            Skin Thickness (mm)
+                        </label>
+                        <input
+                            type="number"
+                            id="SkinThickness"
+                            name="SkinThickness"
+                            min="0"
+                            max="100"
+                            step="any"
+                            placeholder="Example: 20"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Insulin">
+                            Insulin (mu U/mL)
+                        </label>
+                        <input
+                            type="number"
+                            id="Insulin"
+                            name="Insulin"
+                            min="0"
+                            max="3000"
+                            step="any"
+                            placeholder="Example: 80"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BMI">BMI (kg/m²)</label>
+                        <input
+                            type="number"
+                            id="BMI"
+                            name="BMI"
+                            min="1"
+                            max="100"
+                            step="any"
+                            placeholder="Example: 25.5"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DiabetesPedigreeFunction">
+                            Diabetes Pedigree Function
+                        </label>
+                        <input
+                            type="number"
+                            id="DiabetesPedigreeFunction"
+                            name="DiabetesPedigreeFunction"
+                            min="0"
+                            max="10"
+                            step="any"
+                            placeholder="Example: 0.5"
+                            required>
+                    </div>
+
+                </div>
+
+                <div class="submit-row">
+
+                    <button type="submit">
+                        Analyze Health Risk →
+                    </button>
+
+                    <a href="{{ url_for('home') }}"
+                       class="reset-link">
+                        Clear Form
+                    </a>
+
+                </div>
+
+            </form>
+
+            <div class="disclaimer">
+                <strong>Important medical disclaimer:</strong>
+                This project is for educational and demonstration purposes
+                only. Its predictions are not a medical diagnosis and must
+                not be used to make treatment decisions. Consult a qualified
+                healthcare professional for medical advice.
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        Developed as an AI and Machine Learning project —
+        <strong>HealthRisk AI</strong>
+    </footer>
+
+</body>
+</html>
+```
